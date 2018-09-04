@@ -1,0 +1,38 @@
+.container {
+    display: grid;
+    width: 100%;
+    grid-auto-rows: minmax(150px, auto);
+    grid-template-areas: 
+    "h h h h"
+    "s v v v"
+    "s v v v"
+    "s v v v";
+}
+.header {
+grid-area: h;
+text-align: center;
+background-color: aqua;
+}
+.stats-bar {
+    grid-area: s;
+    background-color: red;
+}
+.show-stats {
+    display:none;
+    margin: auto;
+    width: 95%;
+    background-color: blueviolet
+}
+.main-container {
+    grid-area:v;
+    background-color: yellow;
+}
+.challenge-name {
+    text-align: center;
+    background-color: ivory;
+}
+.video-container {
+    margin: auto;
+    width: 80%;
+    background-color: hotpink;
+}

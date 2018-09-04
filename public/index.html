@@ -5,10 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 <body>
-    
+    <div class="container">
+        <header class="header">
+            <h1>12 min challenge</h1>
+            <button class="challenge yoga">Yoga challenge</button>
+            <!-- <button class="challenge other"></button> -->
+        </header>
+        <div class="main-container">
+            <div class="challenge-name">
+                <h3>challenge name</h3>
+            </div>
+            <div class="video-container">
+                video
+                <!-- this is where we place our video -->
+            </div>
+        </div>
+        <div class="stats-bar">
+            <div class="show-stats">
+                this is where your stats are
+            </div>
+
+        </div>
+
+    </div>
+    <!-- <script id="show-stats-template" type="text/x-handlebars-template">
+        <div class="day-{{day number}}"> day 1 + success icon</div>
+    </script> -->
+    <script src="jquery/dist/jquery.js"></script>
+    <script src="handlebars/dist/handlebars.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
