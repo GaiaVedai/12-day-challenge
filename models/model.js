@@ -23,4 +23,4 @@ let Challenge = mongoose.model('Challenge', challengeSchema)
 
 let User = mongoose.model('User', userSchema)
 
-module.exports = { Video: Video, Challenge: Challenge }
+module.exports = { Video: Video, Challenge: Challenge, User: User}
