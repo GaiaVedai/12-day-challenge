@@ -10,7 +10,10 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>12 min challenge</h1>
+            <h1 class="app-h1">12 min challenge</h1>
+            <input type="text" id="userText" placeholder="Enter Post Text" />
+            <button type="submit" id="add-user">Submit</button>
+            <br>
             <button class="challenge" data-type="yoga">Yoga challenge</button>
             <button class="challenge" data-type="pilates">pilates challenge</button>
         </header>
@@ -31,6 +34,22 @@
         </div>
 
     </div>
+    <script>
+        var tag = document.createElement('script')
+        tag.src = "https://www.youtube.com/iframe_api";
+
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+    <script id="user-template" type="text/x-handlebars-template">
+        <h6 id="username" data-name="{{user}}">Hello - {{user}}</h6>
+    </script>
+    <script id="challenge-template" type="text/x-handlebars-template">
+        <div class="some-div" data-name="{{name}}"> {{name}} 
+            <button type="button" class="start-challenge">Start challenge</button>
+            <button type="button" class="finish-challenge">Finish daily challenge</button>
+        </div>  
+    </script>
     <!-- <script id="show-stats-template" type="text/x-handlebars-template">
         <div class="day-{{day number}}"> day 1 + success icon</div>
     </script> -->
