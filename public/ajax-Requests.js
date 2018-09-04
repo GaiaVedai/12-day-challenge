@@ -3,11 +3,23 @@
 class AjaxRequests {
         constructor() {}
     
-    postNewChallenge(method, url, challengeType){
+    postNewUser(method, url, userName){
+        return $.ajax({
+           method: method, 
+           url: url, 
+           data: {name: userName} 
+        })
+        .then((data)=>{
+            console.log(data); // data = new user object (challenges array empty)
+            return data;
+        })
+    }    
+
+    postNewChallenge(method, url, userName){
         return $.ajax({
             method: method,
             url: url,
-            data: {type: challengeType}
+            data: {user: userName}
         })
         .then(function (data) { //data = new challenge object
             console.log(data);
@@ -20,11 +32,11 @@ class AjaxRequests {
         }) 
     }
 
-    updateChallengeInDB(method, url, challengeID){
+    updateChallengeInDB(method, url, userName, videoID){
         return $.ajax({
             method: method,
             url: url,
-            data: {id: challengeID}
+            data: {user: userName, id: videoID}
         })
         .then(function (data) { //data = updated challenge object (challenge for day x was finished)
             console.log(data);
