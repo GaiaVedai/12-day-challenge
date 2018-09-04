@@ -45,7 +45,8 @@ class AjaxRequests {
         .catch(function (err) {
             console.log(err);
             alert('an error had occure');
-        }) 
+        })
+    }     
 }
 
 export default AjaxRequests;
