@@ -35,12 +35,12 @@ router.post('/challenges/yoga', (req, res) => {
             console.log(err);
         }
         newUser.challenges.push(challange);
-        User.findOneAndUpdate({userName: user}, newUser, function(err, result){
+        User.findOneAndUpdate({userName: user}, newUser, function(err, challenge){
             if (err) {
                 console.log(err);
             }
-            console.log(result);
-            res.send(result);
+            console.log(challenge);
+            res.send(challenge);
         })
     });
 });
