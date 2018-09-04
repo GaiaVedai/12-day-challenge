@@ -1,14 +1,14 @@
 // requires : express, express.router, schemas from (../models) 
 const express = require('express');
 const router = express.Router();
-const {User, Challenge, Day} = require('../../models/......Model');
+const {User, Challenge, Video} = require('../../models/......Model');
 
 
 
 router.post('/users', (req, res)=> {
     let {name} = req.body;
     let user = new User({
-        name: name,
+        userName: name,
         challenges: []
     });
     user.save((err, data)=> {
@@ -23,12 +23,22 @@ router.post('/users', (req, res)=> {
 router.post('/challenges/yoga', (req, res) => {
     let {user} = req.body;
     let challange = {
-        type: Yoga, 
-        startDay: Date, 
-        days: [
-            {name: day1, date: Date, done: false, videoId:  }
+        name: Yoga, 
+        length: Number, 
+        videos: [
+            {
+            id: '-yZR0fdUqHM',
+            status: 'open'
+            }
         ]
-    }
+    };
+    User.findOne({userName: user}, function(err, user){
+        if (err) {
+            console.log(err);
+        }
+        user.challenges.push(challange);
+        User.findOneAndUpdate()
+    })
     })
 }
 
