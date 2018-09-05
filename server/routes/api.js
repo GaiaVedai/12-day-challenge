@@ -1,24 +1,28 @@
 
 const express = require('express');
 const router = express.Router();
-let path = require('path')
-const {User, Challenge, Day} = path.dirname('./models/model');
+// const bodyParser = require('body-parser');
+
+const models = require('../../models/model.js');
+const User = models.User
+// router.use(bodyParser.json());
+// router.use(bodyParser.urlencoded({ extended: false }));
 
 // 1. post new User:
 router.post('/users', (req, res)=> {
-    let userName = req.body.name;
-    console.log(userName)
-    let user = new User({
-        userName: userName,
+    let {name} = req.body;
+    console.log(name);
+    let user1 = new User({
+        userName: name,
         challenges: []
     });
-    console.log(user)
-    user.save((err, data)=> {
+    console.log(user1)
+    user1.save((err, data)=> {
         if (err) {
             console.log(err);
         }
         console.log(data + 'has been saved to db');
-        res.send(user);
+        res.send(data);
     })
 })
 
@@ -27,11 +31,10 @@ router.post('/challenges/yoga', (req, res) => {
     let {user} = req.body;
     let challange = {
         type: Yoga, 
-        length: Number, 
         days: [
             {doneDate: Date,
             videoId: '-yZR0fdUqHM',
-            Done: false}
+            done: false}
         ]
     };
     User.findOne({userName: user}, function(err, newUser){
