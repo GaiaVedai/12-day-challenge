@@ -66,4 +66,4 @@ class Renderer {
     // }
 }
 
-export default Renderer
+export default Renderer;
