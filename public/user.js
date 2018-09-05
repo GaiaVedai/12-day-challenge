@@ -1,7 +1,7 @@
 /**
  * @class Responsible for storing and manipulating Challenges
  */
-class user {
+class User {
     constructor(name, type) {
         this.user = name
         this.startDate = Date.now()
@@ -11,16 +11,16 @@ class user {
                         // status: "open" / "watched" / "locked"
     } 
 
-    watchVideo(day) {
-      this.videos.day.status = "watched"
-    }
+    // watchVideo(day) {
+    //   this.videos.day.status = "watched"
+    // }
 
-    fetch(type) {
-        this.videos = {} // ajax request to server to get object from data base
-        // at the beginning only the first video is open to watch
-    }
+    // fetch(type) {
+    //     this.videos = {} // ajax request to server to get object from data base
+    //     // at the beginning only the first video is open to watch
+    // }
 }
 
-export default user
+export default User;
 
 

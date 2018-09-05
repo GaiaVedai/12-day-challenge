@@ -9,7 +9,7 @@ mongoose.connect(process.env.CONNECTION_STRING||'mongodb://localhost/appdata', f
   console.log("DB connection established!"); 
 })
 
-var app = express();
+const app = express();
 app.use('/', api);
 app.use(express.static('public'));
 app.use(express.static('node_modules'));

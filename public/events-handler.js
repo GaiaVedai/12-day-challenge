@@ -1,3 +1,6 @@
+/**
+ * @class Responsible for events
+ */
 class EventsHandler {
     constructor(ajaxRequests, user, renderer) {
         this.ajaxRequests = ajaxRequests;
