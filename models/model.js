@@ -18,11 +18,11 @@ let daySchema = new Schema({
 })
 
 
-
 let Day = mongoose.model('day', daySchema)
 
 let Challenge = mongoose.model('Challenge', challengeSchema)
 
 let User = mongoose.model('User', userSchema)
+
 
 module.exports = { Day: Day, Challenge: Challenge, User: User}

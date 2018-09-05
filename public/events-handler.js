@@ -1,6 +1,7 @@
+
 /**
  * @class Responsible for events
- */
+
 class EventsHandler {
     constructor(ajaxRequests, user, renderer) {
         this.ajaxRequests = ajaxRequests;
@@ -10,6 +11,7 @@ class EventsHandler {
     }
 
     registerAddUser() {
+
         $('.submit-user-name').on('click', ()=> {
             let $input = $(".add-user").val()
             if ($input === "")  {
@@ -38,6 +40,7 @@ class EventsHandler {
                     this.renderer.onPlayerReady(event)
                 })
         })
+
     }
 
     // registerStartChallenge() {
