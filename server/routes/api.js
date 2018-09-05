@@ -2,7 +2,8 @@
 
 const express = require('express');
 const router = express.Router();
-const {User, Challenge, Video} = require('/models/model');
+var path = require('path')
+const {User, Challenge, Video} = path.dirname('/models/model');
 
 // 1. post new User:
 router.post('/users', (req, res)=> {
@@ -69,7 +70,7 @@ router.put('/challenges/yoga/:id', (req, res) => {
 });
 
 
-module.exports = router;
+
 
 
 // method: post.
@@ -91,4 +92,5 @@ module.exports = router;
 // // * updating the challenge obj (save), in addition of a callback function:
 // // * callback func with 2 parameters (err, data). 
 // // send a response to the client with the updated object challenge (data).
+module.exports = router;
 

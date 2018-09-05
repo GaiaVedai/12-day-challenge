@@ -1,8 +1,8 @@
 
 import AjaxRequests from './ajax-Requests.js';
-import User from './user.js';
-import Renderer from './renderer.js'; 
-import EventsHandler from './events-handler.js'; 
+import EventsHandler from './events-handler'; 
+import User from './user';
+import Renderer from '/renderer'; 
 
 let ajaxRequests = new AjaxRequests();
 let user = new User();

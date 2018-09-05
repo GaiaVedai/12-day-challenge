@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var api = require('server/routes/api')
+var api = require('./server/routes/api')
 
 const SERVER_PORT = (process.env.PORT || 8100);
 
@@ -9,12 +9,9 @@ mongoose.connect(process.env.CONNECTION_STRING||'mongodb://localhost/appdata', f
   console.log("DB connection established!"); 
 })
 
-var Post = require('./models/'); //add name of models
-
 var app = express();
 app.use('/', api);
 app.use(express.static('public'));
-app.use(express.static('server'));
 app.use(express.static('node_modules'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

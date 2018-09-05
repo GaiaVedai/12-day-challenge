@@ -1,5 +1,6 @@
-// @class Responsible for managing the Ajax requests from the clientSide
-
+/**
+ * @class Responsible for managing the Ajax requests from the clientSide
+ */
 class AjaxRequests {
         constructor() {}
     
