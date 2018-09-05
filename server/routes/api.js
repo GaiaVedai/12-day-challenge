@@ -6,11 +6,13 @@ const {User, Challenge, Day} = path.dirname('./models/model');
 
 // 1. post new User:
 router.post('/users', (req, res)=> {
-    let {name} = req.body;
+    let userName = req.body.name;
+    console.log(userName)
     let user = new User({
-        userName: name,
+        userName: userName,
         challenges: []
     });
+    console.log(user)
     user.save((err, data)=> {
         if (err) {
             console.log(err);

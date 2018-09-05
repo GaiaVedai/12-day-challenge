@@ -18,11 +18,18 @@ let daySchema = new Schema({
 })
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ad663d5c2c775805d5bec002f6e9eba7c82ba27
 let Day = mongoose.model('day', daySchema)
 
 let Challenge = mongoose.model('Challenge', challengeSchema)
 
 let User = mongoose.model('User', userSchema)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ad663d5c2c775805d5bec002f6e9eba7c82ba27
 module.exports = { Day: Day, Challenge: Challenge, User: User}

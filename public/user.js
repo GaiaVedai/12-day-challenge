@@ -21,5 +21,9 @@ class User {
 }
 
 export default User
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0ad663d5c2c775805d5bec002f6e9eba7c82ba27
 
 
