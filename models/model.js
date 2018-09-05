@@ -17,17 +17,12 @@ let daySchema = new Schema({
   Done: boolean
 })
 
+
 let Day = mongoose.model('day', daySchema)
 
 let Challenge = mongoose.model('Challenge', challengeSchema)
 
 let User = mongoose.model('User', userSchema)
 
-module.exports = { Day: Day, Challenge: Challenge, User: User }
 
-
-
-
-
-
-
+module.exports = { Day: Day, Challenge: Challenge, User: User}
