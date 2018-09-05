@@ -13,15 +13,13 @@
             <div class="i"></div>
             <h1>12 min challenge</h1>
             <input type="text" class="add-user" placeholder="Enter your name"/>
-            <button class="submit-user-name">Submit</button>
+            <button type="submit" class="submit-user-name">Submit</button>
             <br/>
-            <button class="challenge" data-type="yoga">Yoga challenge</button>
-            <button class="challenge" data-type="pilates">pilates challenge</button>
+            <button type="button" class="challenge-yoga" data-type="yoga">Yoga challenge</button>
+            <button type="button" class="challenge-pilates" data-type="pilates">pilates challenge</button>
         </header>
         <div class="main-container">
-            <div class="challenge-name">
-                <h3>challenge name</h3>
-            </div>
+           
            
             <div class="video-container">
                 video
@@ -32,12 +30,16 @@
             <div class="show-stats">
                 this is where your stats are
             </div>
-
         </div>
-
     </div>
-    <script class="addUser" type="text/x-handlebars-template">
-        <div class="day-{{day number}}"> day 1 + success icon</div>
+    <script class="user-template" type="text/x-handlebars-template">
+        <div><h5 class="user-greeting" data-name={{userName}}>Hello {{userName}}</h5></div>
+    </script>
+    <script class="chosen-chellenge" type="text/x-handlebars-template">
+        <div class="challenge-name">
+                <h3>{{challenge}} name</h3>
+                <button type="button" class="start-challenge">Start Daily challenge!</button>
+            </div>
     </script>
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>

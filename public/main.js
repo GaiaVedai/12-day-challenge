@@ -10,6 +10,6 @@ let renderer = new Renderer();
 let eventsHandler = new EventsHandler(ajaxRequests, user, renderer);
 
 eventsHandler.registerAddUser();
-// eventsHandler.registerAddChallenge();
+eventsHandler.registerAddChallenge();
 // eventsHandler.registerUpdateChallenge();
 

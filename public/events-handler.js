@@ -20,17 +20,17 @@ class EventsHandler {
                     .then((data) => {
                         this.user.addUser(data);
                         this.renderer.renderUser(this.user.users, this.user.users[0]);
-                        $input.val("");
+                        $($input).empty()
                     })
             }
         });
     }
 
     registerAddChallenge() {
-        $('.challenge').on('click', function () {
-            let $username = $("#username").data('id');
-            // let $clickedType = $(this).data('type');
-            this.ajaxRequests.postNewChallenge(POST, '/challenges/yoga/+id', $username)
+        $('.challenge-yoga').on('click', () => {
+            let $username = $(".user-greeting").data('name');
+            // let $clickedType = $('.challenge').data('type');
+            this.ajaxRequests.postNewChallenge("POST", '/challenges/yoga', $username)
                 .then((data) => {
                     this.user.addNewChallenge(data);
                     this.renderer.renderChallenge(this.user.users);

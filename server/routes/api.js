@@ -1,22 +1,22 @@
 const express = require('express');
 const router = express.Router();
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 const models = require('../../models/model.js');
 const User = models.User
-// router.use(bodyParser.json());
-// router.use(bodyParser.urlencoded({ extended: false }));
+const Challenge = models.Challenge
+router.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false }));
 
 // 1. post new User:
-router.post('/users', (req, res)=> {
-    let {name} = req.body;
-    console.log(name);
+router.post('/users', (req, res) => {
+    let { name } = req.body;
     let user1 = new User({
         userName: name,
         challenges: []
     });
-    console.log(user1)
-    user1.save((err, data)=> {
+    // console.log(user1)
+    user1.save((err, data) => {
         if (err) {
             console.log(err);
         }
@@ -26,45 +26,43 @@ router.post('/users', (req, res)=> {
 })
 
 // 2. post new challenge -> add the challenge to the user:
-router.post('/challenges/yoga', (req, res) => {
+router.post('/challenges/yoga', function (req, res) {
     let {user} = req.body;
-    let challange = {
-        type: Yoga, 
-        days: [
-            {doneDate: Date,
-            videoId: '-yZR0fdUqHM',
-            done: false}
-        ]
-    };
-    User.findOne({userName: user}, function(err, newUser){
-        if (err) {
+    console.log(user);
+    let challange = { type: 'Yoga', days: []};
+    let day1 = {doneDate: Date, videoId: '-yZR0fdUqHM', done: false};
+    User.findOneAndUpdate({'userName':user}, {$push: {challenges: challenge}}, {new:true}, function (err, user1) {
+        if (err){
             console.log(err);
         }
-        newUser.challenges.push(challange);
-        User.findOneAndUpdate({userName: user}, newUser, function(err, challenge){
-            if (err) {
-                console.log(err);
+        
+        // user1.challenges.push(challenge);
+        // user1.challanges[0].days.push(day1);
+        // console.log(days);
+        user1.save((err, result) => {
+            if (err){
+                res.send(err);
             }
-            console.log(challenge);
-            res.send(challenge);
-        })
+            console.log(result);
+            res.send(result);
+        });    
     });
 });
 
 // 3. put -> make the day's status: watched/locked for the challenge of the specific user:
 router.put('/challenges/yoga', (req, res) => {
-    let {user, id} = req.body;
-    User.findOne({userName: user}, function(err, updatedUser){
+    let { user, id } = req.body;
+    User.findOne({ userName: user }, function (err, updatedUser) {
         if (err) {
             console.log(err);
         }
-        updatedUser.challenges[0].days[0].findByIdAndUpdate({videoId: id}, {Done: true}, function(err, doneStatus){
+        updatedUser.challenges[0].days[0].findByIdAndUpdate({ videoId: id }, { Done: true }, function (err, doneStatus) {
             if (err) {
                 console.log(err);
             }
             console.log(doneStatus);
         });
-        User.findOneAndUpdate({userName: user}, updatedUser, function(err, result){
+        User.findOneAndUpdate({ userName: user }, updatedUser, function (err, result) {
             if (err) {
                 console.log(err);
             }

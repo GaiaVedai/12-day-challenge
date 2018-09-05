@@ -22,15 +22,15 @@ postNewChallenge(method, url, userName){
         url: url,
         data: {user: userName}
     })
-    .then(function (data) { //data = new challenge object
-        console.log(data);
-        return data;
-    })
-    .catch(function (err) {
-        console.log(err);
-        let errorMes = 'error had occure';
-        return errorMes;
-    }) 
+    // .then(function (data) { //data = new challenge object
+    //     console.log(data);
+    //     return data;
+    // })
+    // .catch(function (err) {
+    //     console.log(err);
+    //     let errorMes = 'error had occure';
+    //     return errorMes;
+    // }) 
 }
 
 updateChallengeInDB(method, url, userName, videoID){

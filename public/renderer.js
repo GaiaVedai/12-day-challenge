@@ -4,22 +4,23 @@
 class Renderer {
     constructor() {
         this.$videoContainer = $(".video-container");
-        this.$header1 = $('.user-name-container');
-        this.$userTemplate = $('.addUser').html();
-        this.$challengeTemplate = $('#challenge-template').html();
+        this.$i = $('.i');
+        this.$userTemplate = $('.user-template').html();
+        this.$challengeTemplate = $('.chosen-chellenge').html();
+        this.$mainContainer = $('.main-container').html()
     }
 
-    renderUser(users, userIndex){
+    renderUser(users, userIndex) {
         // this.$.empty(); // complete this
         let template = Handlebars.compile(this.$userTemplate);
-        for (let i = 0; i < users.length; i++) {
+        for (let userIndex = 0; userIndex < users.length; userIndex++) {           
             let newHTML = template(users[userIndex]);
-            console.log(newHTML);
-            this.$header1.append(newHTML);
+            this.$i.append(newHTML);
         }
     }
 
     renderChallenge(users, userIndex){
+        $this.$mainContainer.empty();
         let template = Handlebars.compile(this.$challengeTemplate);
         for (let i = 0; i < users[userIndex].challenges[i].length; i++) {
             let newHTML = template(users[userIndex].challenges[0]);
