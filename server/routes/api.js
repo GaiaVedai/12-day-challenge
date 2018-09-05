@@ -1,23 +1,22 @@
-
 const express = require('express');
 const router = express.Router();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-const models = require('../../models/model')
-// const Day = models.Day
-// const Challenge = models.Challenge
+// const bodyParser = require('body-parser');
+
+const models = require('../../models/model.js');
 const User = models.User
+// router.use(bodyParser.json());
+// router.use(bodyParser.urlencoded({ extended: false }));
 
 // 1. post new User:
 router.post('/users', (req, res)=> {
     let {name} = req.body;
-    console.log(name)
-    let newUser = new User({
+    console.log(name);
+    let user1 = new User({
         userName: name,
         challenges: []
     });
-    console.log(newUser)
-    newUser.save((err, data)=> {
+    console.log(user1)
+    user1.save((err, data)=> {
         if (err) {
             console.log(err);
         }
@@ -35,7 +34,7 @@ router.post('/challenges/yoga', (req, res) => {
         days: [
             {doneDate: Date,
             videoId: '-yZR0fdUqHM',
-            Done: false}
+            done: false}
         ]
     };
     User.findOne({userName: user}, function(err, newUser){
@@ -100,4 +99,3 @@ module.exports = router;
 // // * updating the challenge obj (save), in addition of a callback function:
 // // * callback func with 2 parameters (err, data). 
 // // send a response to the client with the updated object challenge (data).
-
