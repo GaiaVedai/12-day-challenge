@@ -19,7 +19,7 @@ class EventsHandler {
                 this.ajaxRequests.postNewUser("POST", '/users', $input)
                     .then((data) => {
                         this.user.addUser(data);
-                        this.renderer.renderUser(this.user.users[0].username);
+                        this.renderer.renderUser(this.user.users, this.user.users[0]);
                         $input.val("");
                     })
             }

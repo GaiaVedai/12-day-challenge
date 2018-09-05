@@ -30,7 +30,6 @@ router.post('/challenges/yoga', (req, res) => {
     let {user} = req.body;
     let challange = {
         type: Yoga, 
-        length: Number, 
         days: [
             {doneDate: Date,
             videoId: '-yZR0fdUqHM',
