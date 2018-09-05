@@ -37,32 +37,34 @@ router.post('/challenges/yoga', (req, res) => {
             done: false}
         ]
     };
-    Post.findByIdAndUpdate(req.body.postId, 
-        {$push: 
-          { comments: 
-            {text: req.body.text,
-             user: req.body.user}
-          }
-        }, {new: true}, (err, post) => {
-        if (err) throw err;
-        else {res.send(post)}
-        })
-      })
-    
-    User.findOne({userName: user}, function(err, newUser){
-        if (err) {
-            console.log(err);
-        }
-        newUser.challenges.push(challange);
-        User.findOneAndUpdate({userName: user}, newUser, function(err, challenge){
+    User.findOneAndUpdate(user, { $push: {challanges: challange} }, {new: true}, (err, user)=> {
             if (err) {
                 console.log(err);
             }
-            console.log(challenge);
-            res.send(challenge);
+            console.log(user + 'has been saved and updated to db');
+            res.send(user);
         })
-    });
-});
+})    
+
+
+
+
+      
+//     User.findOne({userName: user}, function(err, newUser){
+//         if (err) {
+//             console.log(err);
+//         }
+//         newUser.challenges.push(challange);
+//         User.findOneAndUpdate({userName: user}, newUser, function(err, challenge){
+//             if (err) {
+//                 console.log(err);
+//             }
+//             console.log(challenge);
+//             res.send(challenge);
+//         })
+//     });
+// });
+
 
 // 3. put -> make the day's status: watched/locked for the challenge of the specific user:
 router.put('/challenges/yoga', (req, res) => {
@@ -86,6 +88,31 @@ router.put('/challenges/yoga', (req, res) => {
         });
     });
 });
+
+        // router.post('/comment', (req, res ) => {
+        //     Post.findByIdAndUpdate(req.body.postId, 
+        //       {$push: 
+        //         { comments: 
+        //           {text: req.body.text,
+        //            user: req.body.user}
+        //         }
+        //       }, {new: true}, (err, post) => {
+        //       if (err) throw err;
+        //       else {res.send(post)}
+        //       })
+        //     })
+          
+        //   router.delete('/deletecomment', (req, res) => {
+        //     Post.findByIdAndUpdate(req.body.postId, 
+        //       {$pull: 
+        //         {comments: {
+        //           _id: req.body.commentId}
+        //         }
+        //       }, {new: true}, (err, post) => {
+        //         if (err) throw err;
+        //         else res.send(post)
+        //       })
+        //     })
 
 module.exports = router;
 
