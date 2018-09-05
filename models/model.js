@@ -1,9 +1,12 @@
 var mongoose = require('mongoose')
+// mongoose.connect('mongodb://localhost/appdata',()=>{console.log('Connected')});
+
 var Schema = mongoose.Schema
 
-let userSchema = new Schema({
-  userName: String,
-  challenges: [challengeSchema]
+let daySchema = new Schema({
+  doneDate: Date,
+  videoId: String,
+  done: Boolean
 })
 
 let challengeSchema = new Schema({
@@ -11,25 +14,18 @@ let challengeSchema = new Schema({
   days: [daySchema]
 })
 
-let daySchema = new Schema({
-  doneDate: Date,
-  videoId: String,
-  Done: boolean
+let userSchema = new Schema({
+  userName: String,
+  challenges: [challengeSchema]
 })
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 0ad663d5c2c775805d5bec002f6e9eba7c82ba27
-let Day = mongoose.model('day', daySchema)
 
-let Challenge = mongoose.model('Challenge', challengeSchema)
+// let Day = mongoose.model('day', daySchema)
 
-let User = mongoose.model('User', userSchema)
+// let Challenge = mongoose.model('Challenge', challengeSchema)
 
-<<<<<<< HEAD
-=======
+let User = mongoose.model('user', userSchema)
 
->>>>>>> 0ad663d5c2c775805d5bec002f6e9eba7c82ba27
-module.exports = { Day: Day, Challenge: Challenge, User: User}
+module.exports = {User}

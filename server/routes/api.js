@@ -1,24 +1,28 @@
 
 const express = require('express');
 const router = express.Router();
-let path = require('path')
-const {User, Challenge, Day} = path.dirname('./models/model');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+const models = require('../../models/model')
+// const Day = models.Day
+// const Challenge = models.Challenge
+const User = models.User
 
 // 1. post new User:
 router.post('/users', (req, res)=> {
-    let userName = req.body.name;
-    console.log(userName)
-    let user = new User({
-        userName: userName,
+    let {name} = req.body;
+    console.log(name)
+    let newUser = new User({
+        userName: name,
         challenges: []
     });
-    console.log(user)
-    user.save((err, data)=> {
+    console.log(newUser)
+    newUser.save((err, data)=> {
         if (err) {
             console.log(err);
         }
         console.log(data + 'has been saved to db');
-        res.send(user);
+        res.send(data);
     })
 })
 

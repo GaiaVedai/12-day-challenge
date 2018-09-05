@@ -7,8 +7,8 @@ class User {
         this.challenges = []
     } 
 
-    addUser(user){
-        this.users.push(user)
+    addUser(newUser){
+        this.users.push(newUser)
     }
 
     addNewChallenge(challenge){
@@ -16,14 +16,10 @@ class User {
     }
 
     updateChallengeOfUser(user){
-        this.user[0] = user;
+        this.users[0] = user;
     }
 }
 
 export default User
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ad663d5c2c775805d5bec002f6e9eba7c82ba27
 
 

@@ -4,8 +4,8 @@
 class Renderer {
     constructor() {
         this.$videoContainer = $(".video-container");
-        this.$header1 = $('.app-h1');
-        this.$userTemplate = $('#user-template').html();
+        this.$header1 = $('.user-name-container');
+        this.$userTemplate = $('.addUser').html();
         this.$challengeTemplate = $('#challenge-template').html();
     }
 
