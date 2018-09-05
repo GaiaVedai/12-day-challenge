@@ -1,6 +1,6 @@
 
-/**
- * @class Responsible for events
+// /**
+//  * @class Responsible for events
 
 class EventsHandler {
     constructor(ajaxRequests, user, renderer) {
