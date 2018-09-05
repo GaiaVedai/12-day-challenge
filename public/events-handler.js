@@ -20,7 +20,7 @@ class EventsHandler {
                 this.ajaxRequests.postNewUser("POST", '/users', $input)
                     .then((data) => {
                         this.user.addUser(data);
-                        this.renderer.renderUser(this.user.users, this.user.users[0]);
+                        this.renderer.renderUser(this.user.users);
                         $input.val("");
                     })
             }
@@ -28,10 +28,10 @@ class EventsHandler {
     }
 
     registerAddChallenge() {
-        $('.challenge').on('click', function () {
-            let $username = $("#username").data('id');
+        $('.challenge-yoga').on('click', ()=> {
+            let $username = $("h5").data('name');
             // let $clickedType = $(this).data('type');
-            this.ajaxRequests.postNewChallenge(POST, '/challenges/yoga/+id', $username)
+            this.ajaxRequests.postNewChallenge("POST", '/challenges/yoga', $username)
                 .then((data) => {
                     this.user.addNewChallenge(data);
                     this.renderer.renderChallenge(this.user.users);

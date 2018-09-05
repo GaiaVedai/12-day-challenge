@@ -30,13 +30,25 @@ router.post('/users', (req, res)=> {
 router.post('/challenges/yoga', (req, res) => {
     let {user} = req.body;
     let challange = {
-        type: Yoga, 
+        type: 'Yoga', 
         days: [
             {doneDate: Date,
             videoId: '-yZR0fdUqHM',
             done: false}
         ]
     };
+    Post.findByIdAndUpdate(req.body.postId, 
+        {$push: 
+          { comments: 
+            {text: req.body.text,
+             user: req.body.user}
+          }
+        }, {new: true}, (err, post) => {
+        if (err) throw err;
+        else {res.send(post)}
+        })
+      })
+    
     User.findOne({userName: user}, function(err, newUser){
         if (err) {
             console.log(err);
