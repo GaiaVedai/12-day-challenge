@@ -1,9 +1,8 @@
-// requires : express, express.router, schemas from (../models) 
 
 const express = require('express');
 const router = express.Router();
-var path = require('path')
-const {User, Challenge, Video} = path.dirname('/models/model');
+let path = require('path')
+const {User, Challenge, Day} = path.dirname('./models/model');
 
 // 1. post new User:
 router.post('/users', (req, res)=> {
@@ -25,10 +24,12 @@ router.post('/users', (req, res)=> {
 router.post('/challenges/yoga', (req, res) => {
     let {user} = req.body;
     let challange = {
-        name: Yoga, 
+        type: Yoga, 
         length: Number, 
-        videos: [
-            {id: '-yZR0fdUqHM', status: 'open'}
+        days: [
+            {doneDate: Date,
+            videoId: '-yZR0fdUqHM',
+            Done: false}
         ]
     };
     User.findOne({userName: user}, function(err, newUser){
@@ -47,28 +48,29 @@ router.post('/challenges/yoga', (req, res) => {
 });
 
 // 3. put -> make the day's status: watched/locked for the challenge of the specific user:
-router.put('/challenges/yoga/:id', (req, res) => {
+router.put('/challenges/yoga', (req, res) => {
     let {user, id} = req.body;
     User.findOne({userName: user}, function(err, updatedUser){
         if (err) {
             console.log(err);
         }
-        updatedUser.challenges[0].videos.findByIdAndUpdate({id: id}, {status: 'watched'}, function(err, videoStatus){
+        updatedUser.challenges[0].days[0].findByIdAndUpdate({videoId: id}, {Done: true}, function(err, doneStatus){
             if (err) {
                 console.log(err);
             }
-            console.log(videoStatus);
+            console.log(doneStatus);
         });
         User.findOneAndUpdate({userName: user}, updatedUser, function(err, result){
             if (err) {
                 console.log(err);
             }
             console.log(result);
-            res.send(result);
+            res.send(updatedUser);
         });
     });
 });
 
+module.exports = router;
 
 
 
@@ -92,5 +94,4 @@ router.put('/challenges/yoga/:id', (req, res) => {
 // // * updating the challenge obj (save), in addition of a callback function:
 // // * callback func with 2 parameters (err, data). 
 // // send a response to the client with the updated object challenge (data).
-module.exports = router;
 

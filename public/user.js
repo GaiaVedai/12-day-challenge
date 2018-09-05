@@ -1,26 +1,25 @@
 /**
  * @class Responsible for storing and manipulating Challenges
  */
-class user {
-    constructor(name, type) {
-        this.user = name
-        this.startDate = Date.now()
-        this.challengeType = type 
-        this.videos = {} //{ day1: { status: "open", id: "id" }, 
-                        // day2 : { status: "locked", id: "id" } }
-                        // status: "open" / "watched" / "locked"
+class User {
+    constructor() {
+        this.users = []
+        this.challenges = []
     } 
 
-    watchVideo(day) {
-      this.videos.day.status = "watched"
+    addUser(user){
+        this.users.push(user)
     }
 
-    fetch(type) {
-        this.videos = {} // ajax request to server to get object from data base
-        // at the beginning only the first video is open to watch
+    addNewChallenge(challenge){
+        this.users[0].challenges.push(challenge);
+    }
+
+    updateChallengeOfUser(user){
+        this.user[0] = user;
     }
 }
 
-export default user
+export default User
 
 

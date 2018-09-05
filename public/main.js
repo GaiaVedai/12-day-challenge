@@ -1,5 +1,5 @@
 
-import AjaxRequests from './ajax-Requests.js';
+import AjaxRequests from './ajax-requests.js';
 import EventsHandler from './events-handler'; 
 import User from './user';
 import Renderer from '/renderer'; 
@@ -11,5 +11,5 @@ let eventsHandler = new EventsHandler(ajaxRequests, user, renderer);
 
 eventsHandler.registerAddUser();
 eventsHandler.registerAddChallenge();
-// eventsHandler.registerUpdateChallenge();
+eventsHandler.registerUpdateChallenge();
 
