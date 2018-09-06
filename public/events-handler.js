@@ -47,11 +47,10 @@ class EventsHandler {
             this.ajaxRequests.getVideo("GET", $type)
                 .then((data)=>{
                     this.renderer.renderVideosToChoose(this.renderer.videoObj(data))
+                    let videoID = data.items[0].id.videoId
+                    let video_url = 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1'
+                    $('.video-container').append('<iframe id=videoID src="' + video_url + '" frameborder="0"></iframe>')
                 })
-
-            // this.renderer.IFramePlayerAPI();
-            // this.renderer.onYouTubeIframeAPIReady(this.renderer.videoIdGo(this.user.users[0].challenges[0].videos[0].id))
-            // this.renderer.onPlayerReady(event)
         })
     }
 
@@ -71,17 +70,16 @@ class EventsHandler {
             let challengeIndex = this.user._findIndexByChallengeID (userIndex, challengeID)
             this.ajaxRequests.postNewVideo("POST", '/challenges/'+$type+$videoId, $username)
                 .then((data)=>{
-                    this.user.addNewVideo($videoId, challengeIndex, userIndex)
+                    this.user.addNewVideo(data.challanges[0].videoId, challengeIndex, userIndex)
                 })
         })
     }
 
-    registerWatchVideo(){
-        $('.video-container').on('click', '.finish-challenge', (event)=> {
-            this.renderer.onYouTubeIframeAPIReady(this.renderer.videoIdGo('VaoV1PrYft4'));
-            this.renderer.onPlayerReady(event); 
-        })
-    }
+    // registerWatchVideo(){
+    //     $('.video-container').on('click', '.finish-challenge', ()=> {
+    //         this.renderer.onYouTubeIframeAPIReady(this.renderer.videoIdGo('VaoV1PrYft4')); 
+    //     })
+    // }
 }
 
 export default EventsHandler
