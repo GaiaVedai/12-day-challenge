@@ -29,10 +29,10 @@ background-color: aqua;
 }
 .challenge-name {
     text-align: center;
-    background-color: ivory;
+    /* background-color: ivory; */
 }
 .video-container {
     margin: auto;
     width: 80%;
-    background-color: hotpink;
+    /* background-color: hotpink; */
 }
