@@ -1,23 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 
-const models = require('../../models/model.js');
-const User = models.User
-const Challenge = models.Challenge
-const Day = models.Day
-router.use(bodyParser.json());
-router.use(bodyParser.urlencoded({ extended: false }));
+const {User} = require('../../models/model.js');
+// const User = models.User
+// const Day = models.Day
+// const Challenge = models.Challenge
+// router.use(bodyParser.json());
+// router.use(bodyParser.urlencoded({ extended: false }));
 
 // 1. post new User:
-router.post('/users', (req, res) => {
-    let { name } = req.body;
+router.post('/users', (req, res)=> {
+    let {name} = req.body;
+    console.log(name);
     let user1 = new User({
         userName: name,
         challenges: []
     });
-    // console.log(user1)
-    user1.save((err, data) => {
+    console.log(user1)
+    user1.save((err, data)=> {
         if (err) {
             console.log(err);
         }
@@ -27,46 +28,94 @@ router.post('/users', (req, res) => {
 })
 
 // 2. post new challenge -> add the challenge to the user:
-router.post('/challenges/yoga', function (req, res) {
-    let {user} = req.body;
-    let challange = {type: 'Yoga', days: []};
-    let day1 = {doneDate: Date, videoId: '-yZR0fdUqHM', done: false};
-    User.findOneAndUpdate({'userName': user}, {$push: {challenges: challange}}, {new: true}, function (err, result) {
-        if (err) {
-            res.send(err);
-        }
-        let dayOne = new Day(day1)
-        User.findOneAndUpdate({'type': 'yoga'}, {$push: {days:day1}},{new:true}, function(err, data){
-            if (err) {
-                res.send(err);
-            }
-            res.send(data);
-        })
-    });
-});
-
-// 3. put -> make the day's status: watched/locked for the challenge of the specific user:
-router.put('/challenges/yoga', (req, res) => {
-    let { user, id } = req.body;
-    User.findOne({ userName: user }, function (err, updatedUser) {
-        if (err) {
-            console.log(err);
-        }
-        updatedUser.challenges[0].days[0].findByIdAndUpdate({ videoId: id }, { Done: true }, function (err, doneStatus) {
-            if (err) {
-                console.log(err);
-            }
-            console.log(doneStatus);
-        });
-        User.findOneAndUpdate({ userName: user }, updatedUser, function (err, result) {
-            if (err) {
-                console.log(err);
+router.post('/challenges/:type', function (req, res) {
+    let {name} = req.body;
+    let {type} = req.params;
+    User.findOneAndUpdate({userName: name}, {$push: {challenges: { type: type, done: false, videoId: ""}}}, {new: true}, (err, result)=>{
+            if (err){
+                console.log(err)
             }
             console.log(result);
-            res.send(updatedUser);
-        });
-    });
+            res.send(result);
+    })
 });
+
+   
+
+
+
+// router.delete('/deletecomment', (req, res) => {
+//     Post.findByIdAndUpdate(req.body.postId, 
+//       {$pull: 
+//         {comments: {
+//           _id: req.body.commentId}
+//         }
+//       }, {new: true}, (err, post) => {
+//         if (err) throw err;
+//         else res.send(post)
+//       })
+//     })
+
+// 3. post -> make the day's status: watched/locked for the challenge of the specific user:
+router.post('/challenges/:type/:videoId', (req, res) => {
+    let {name} = req.body;
+    let {type, videoId} = req.params;
+    User.findOneAndUpdate({userName: name}, {challenges: { type: type, videoId: videoId}}, {new: true}, (err, result)=>{
+        if (err){
+            console.log(err)
+        }
+        console.log(result);
+        res.send(result);
+    })
+})
+    
+
+
+//     User.findOne({userName: user}, function(err, updatedUser){
+//         if (err) {
+//             console.log(err);
+//         }
+
+//         updatedUser.challenges[0].days[0].findByIdAndUpdate({videoId: videoId}, {done: true}, function(err, doneStatus){
+//             if (err) {
+//                 console.log(err);
+//             }
+//             console.log(doneStatus);
+//         });
+//         User.findOneAndUpdate({userName: user}, updatedUser, function(err, updatedUser){
+//             if (err) {
+//                 console.log(err);
+//             }
+//             console.log(updatedUser);
+//             res.send(updatedUser);
+//         });
+//     });
+// });
+
+        // router.post('/comment', (req, res ) => {
+        //     Post.findByIdAndUpdate(req.body.postId, 
+        //       {$push: 
+        //         { comments: 
+        //           {text: req.body.text,
+        //            user: req.body.user}
+        //         }
+        //       }, {new: true}, (err, post) => {
+        //       if (err) throw err;
+        //       else {res.send(post)}
+        //       })
+        //     })
+          
+        //   router.delete('/deletecomment', (req, res) => {
+        //     Post.findByIdAndUpdate(req.body.postId, 
+        //       {$pull: 
+        //         {comments: {
+        //           _id: req.body.commentId}
+        //         }
+        //       }, {new: true}, (err, post) => {
+        //         if (err) throw err;
+        //         else res.send(post)
+        //       })
+        //     })
 
 module.exports = router;
 

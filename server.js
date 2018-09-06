@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var api = require('./server/routes/api')
 const app = express();
-const SERVER_PORT = (process.env.PORT || 8100)
+const SERVER_PORT = (8100);
 
 mongoose.connect(process.env.CONNECTION_STRING||'mongodb://localhost/appdataDB', function () {
   console.log("DB connection established!"); 
