@@ -13,18 +13,15 @@
             <div class="i"></div>
             <h1>12 min challenge</h1>
             <input type="text" class="add-user" placeholder="Enter your name"/>
-            <button type="submit" class="submit-user-name">Submit</button>
+            <button type="button" class="submit-user-name">Add</button>
             <br/>
-            <button type="button" class="challenge-yoga" data-type="yoga">Yoga challenge</button>
-            <button type="button" class="challenge-pilates" data-type="pilates">pilates challenge</button>
+            <button type="button" class="challenge" data-type="yoga">Yoga challenge</button>
+            <button type="button" class="challenge" data-type="pilates">pilates challenge</button>
         </header>
         <div class="main-container">
-            <div class="challenge-name">
-                <h3>challenge name</h3>
-            </div>
+            <div class="challenge-name"></div>
            
             <div class="video-container">
-                video
                 <!-- this is where we place our video -->
             </div>
         </div>
@@ -35,7 +32,17 @@
         </div>
     </div>
     <script class="user-template" type="text/x-handlebars-template">
-        <div><h5 data-name="{{userName}}">Hello {{userName}}</h5></div>
+        <h2 class="username-header" data-name="{{userName}}" data-id="{{id}}"> Hello {{userName}}</h2>
+    </script>
+    <script class="challenge-template" type="text/x-handlebars-template">
+        <h3 class="chall-header" data-id="{{id}}" data-type="{{type}}">{{type}} Challenge</h3>
+        <button type="button" class="start-challenge">Start Challenge</button>
+    </script>
+    <script class="videos-to-choose-template" type="text/x-handlebars-template">
+        <div class="choose-video">choose video:</div>
+        <button class="image-btn" type="button" data-id="{{videoId1}}"><img src="{{image1}}" alt="10 minutes video" class="image-btn"></button>
+        <button class="image-btn" type="button" data-id="{{videoId2}}"><img src="{{image2}}" alt="10 minutes video" class="image-btn"></button>
+        <button class="image-btn" type="button" data-id="{{videoId3}}"><img src="{{image3}}" alt="10 minutes video" class="image-btn"></button>
     </script>
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>

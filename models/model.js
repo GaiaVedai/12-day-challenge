@@ -1,23 +1,22 @@
 const mongoose = require('mongoose')
 const Schema =  mongoose.Schema
 
-let daySchema = new Schema({
-  doneDate: Date,
-  videoId: String,
-  done: Boolean
-})
+// let daySchema = new Schema({
+//   doneDate: Date,
+//   videoId: String,
+//   done: Boolean
+// })
 
 let challengeSchema = new Schema({
   type: String,
-  days: [daySchema]
+  done: Boolean,
+  videoId: String
 })
 
 let userSchema = new Schema({
   userName: String,
   challenges: [challengeSchema]
 })
-
-
 
 // let Day = mongoose.model('day', daySchema)
 

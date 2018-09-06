@@ -1,6 +1,5 @@
 
 import AjaxRequests from './ajax-requests.js';
-
 import EventsHandler from './events-handler.js'; 
 import User from './user.js';
 import Renderer from './renderer.js'; 
@@ -12,5 +11,5 @@ let eventsHandler = new EventsHandler(ajaxRequests, user, renderer);
 
 eventsHandler.registerAddUser();
 eventsHandler.registerAddChallenge();
-// eventsHandler.registerUpdateChallenge();
-
+eventsHandler.registerChooseVideo();
+eventsHandler.registerAddVideo()
