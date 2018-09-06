@@ -7,8 +7,8 @@ class User {
         this.challenges = []
     } 
 
-    addUser(user){
-        this.users.push(user)
+    addUser(newUser){
+        this.users.push(newUser)
     }
 
     _findIndexByUserName (userName){
@@ -38,6 +38,5 @@ class User {
 }
 
 export default User
-
 
 

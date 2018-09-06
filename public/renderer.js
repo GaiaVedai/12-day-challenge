@@ -19,6 +19,7 @@ class Renderer {
     }
 
     renderChallenge(users, userIndex){
+        $this.$mainContainer.empty();
         let template = Handlebars.compile(this.$challengeTemplate);
         let newHTML = template(users[userIndex].challenges[0]);
         this.$challengeName.append(newHTML);
