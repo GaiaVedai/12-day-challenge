@@ -42,9 +42,6 @@ class Renderer {
         return obj;
     }
 
-    // IFramePlayerAPI(){
-
-    // }
 
     onYouTubeIframeAPIReady(){
         videoIdGo(videoId);

@@ -11,7 +11,6 @@ class EventsHandler {
     }
 
     registerAddUser() {
-
         $('.submit-user-name').on('click', ()=> {
             let $input = $(".add-user").val()
             if ($input === "")  {
@@ -74,6 +73,13 @@ class EventsHandler {
                 .then((data)=>{
                     this.user.addNewVideo($videoId, challengeIndex, userIndex)
                 })
+        })
+    }
+
+    registerWatchVideo(){
+        $('.video-container').on('click', '.finish-challenge', (event)=> {
+            this.renderer.onYouTubeIframeAPIReady(this.renderer.videoIdGo('VaoV1PrYft4'));
+            this.renderer.onPlayerReady(event); 
         })
     }
 }

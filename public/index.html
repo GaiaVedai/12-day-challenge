@@ -31,6 +31,13 @@
             </div>
         </div>
     </div>
+    <script>
+        var tag = document.createElement('script')
+        tag.src = "https://www.youtube.com/iframe_api";
+
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
     <script class="user-template" type="text/x-handlebars-template">
         <h2 class="username-header" data-name="{{userName}}" data-id="{{id}}"> Hello {{userName}}</h2>
     </script>
@@ -43,6 +50,8 @@
         <button class="image-btn" type="button" data-id="{{videoId1}}"><img src="{{image1}}" alt="10 minutes video" class="image-btn"></button>
         <button class="image-btn" type="button" data-id="{{videoId2}}"><img src="{{image2}}" alt="10 minutes video" class="image-btn"></button>
         <button class="image-btn" type="button" data-id="{{videoId3}}"><img src="{{image3}}" alt="10 minutes video" class="image-btn"></button>
+        <br/>
+        <button class="finish-challenge" type="button">Finish challenge</button>
     </script>
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
