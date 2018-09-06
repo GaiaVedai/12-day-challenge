@@ -61,7 +61,7 @@ router.post('/challenges/:type', function (req, res) {
 router.post('/challenges/:type/:videoId', (req, res) => {
     let {name} = req.body;
     let {type, videoId} = req.params;
-    User.findOneAndUpdate({userName: name}, {challenges: { type: type, videoId: videoId}}, {new: true}, (err, result)=>{
+    User.findOneAndUpdate({userName: name}, {challenges: { type: type, videoId: videoId, done: true}}, {new: true}, (err, result)=>{
         if (err){
             console.log(err)
         }

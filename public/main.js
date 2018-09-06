@@ -12,5 +12,5 @@ let eventsHandler = new EventsHandler(ajaxRequests, user, renderer);
 eventsHandler.registerAddUser();
 eventsHandler.registerAddChallenge();
 eventsHandler.registerChooseVideo();
-// eventsHandler.registerAddVideo();
+eventsHandler.registerAddVideo();
 // eventHandler.registerFinishChallenge()

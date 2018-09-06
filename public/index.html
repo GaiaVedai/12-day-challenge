@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
+
 <body>
     <div class="container">
         <header class="header">
             <div class="i"></div>
             <h1>12 min challenge</h1>
-            <input type="text" class="add-user" placeholder="Enter your name"/>
+            <input type="text" class="add-user" placeholder="Enter your name" />
             <button type="button" class="submit-user-name">Add</button>
             <br/>
             <button type="button" class="challenge" data-type="yoga">Yoga challenge</button>
@@ -20,7 +22,7 @@
         </header>
         <div class="main-container">
             <div class="challenge-name"></div>
-           
+
             <div class="video-container">
                 <div id="player"></div>
                 <!-- this is where we place our video -->
@@ -40,24 +42,24 @@
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
     <script class="user-template" type="text/x-handlebars-template">
-        <h2 class="username-header" data-name="{{userName}}" data-id="{{id}}"> Hello {{userName}}</h2>
-    </script>
+            <h2 class="username-header" data-name="{{userName}}" data-id="{{id}}"> Hello {{userName}}</h2>
+        </script>
     <script class="challenge-template" type="text/x-handlebars-template">
-        <h3 class="chall-header" data-id="{{id}}" data-type="{{type}}">{{type}} Challenge</h3>
-        <button type="button" class="start-challenge">Start Challenge</button>
-    </script>
+            <h3 class="challenge-header" data-id="{{id}}" data-type="{{type}}">{{type}} Challenge</h3>
+            <button type="button" class="start-challenge">Start Challenge</button>
+        </script>
     <script class="videos-to-choose-template" type="text/x-handlebars-template">
-        <div class="choose-video">choose video:</div>
-        <button class="image-btn" type="button" data-id="{{videoId1}}"><img src="{{image1}}"  alt="10 minutes video" class="image-btn"></button>
-        <button class="image-btn" type="button" data-id="{{videoId2}}"><img src="{{image2}}" alt="10 minutes video" class="image-btn"></button>
-        <button class="image-btn" type="button" data-id="{{videoId3}}"><img src="{{image3}}" alt="10 minutes video" class="image-btn"></button>
-
-        <br/>
-        <div id="player"></div>
-        <button class="finish-challenge" type="button">Finish challenge</button>
-    </script>
+            <div class="choose-video">choose video:</div>
+            <img src="{{image1}}" data-id="{{videoId1}}" alt="10 minutes video" class="image-btn"/>
+             <img src="{{image2}}" data-id="{{videoId2}}" alt="10 minutes video" class="image-btn"/>
+             <img src="{{image3}}" data-id="{{videoId3}}" alt="10 minutes video" class="image-btn"/>
+            <br/>
+            <div id="player"></div>
+            <button class="finish-challenge" type="button">Finish challenge</button>
+        </script>
     <script src="jquery/dist/jquery.js"></script>
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="main.js" type="module"></script>
 </body>
+
 </html>

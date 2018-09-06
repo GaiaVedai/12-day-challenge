@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>One Page Wonder - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/one-page-wonder.min.css" rel="stylesheet">
+  <style>.challenge{border: 1px solid white;}
+  </style>
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="masthead text-center text-white">
+      <div class="masthead-content">
+        <div class="container">
+            <div class="i"></div>
+
+          <h2 class="masthead-subheading mb-0">12 Min Challenge</h2>
+          <div class="input-group">
+              <input type="text" class=" add-user form-control" placeholder="Enter your name">
+              <span class="input-group-btn">
+                <button class="btn btn-default submit-user-name" type="button">Go!</button>
+              </span>
+            </div>
+            <br/>
+            <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5 challenge" data-type="yoga">Yoga challenge</a>
+            <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5 challenge" data-type="pilates">pilates challenge</a>
+                  </div>
+      </div>
+      <div class="bg-circle-1 bg-circle"></div>
+      <div class="bg-circle-2 bg-circle"></div>
+      <div class="bg-circle-3 bg-circle"></div>
+      <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+
+    <div class="main-container">
+        <div class="challenge-name"></div>
+
+        <div class="video-container">
+            <div id="player"></div>
+            <!-- this is where we place our video -->
+        </div>
+    </div>
+    <div class="stats-bar">
+        <div class="show-stats">
+            this is where your stats are
+        </div>
+    </div>
+
+    <!-- <section>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <div class="p-5">
+              <img class="img-fluid rounded-circle" src="img/01.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="p-5">
+              <h2 class="display-4">For those about to rock...</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-black">
+      <div class="container">
+        <p class="m-0 text-center text-white small">Copyright &copy; 12 minute challenge</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        var tag = document.createElement('script')
+        tag.src = "https://www.youtube.com/iframe_api";
+
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    </script>
+    <script class="user-template" type="text/x-handlebars-template">
+            <h2 class="username-header" data-name="{{userName}}" data-id="{{id}}"> Hello {{userName}}</h2>
+        </script>
+    <script class="challenge-template" type="text/x-handlebars-template">
+            <h3 class="challenge-header" data-id="{{id}}" data-type="{{type}}">{{type}} Challenge</h3>
+            <button type="button" class="start-challenge">Start Challenge</button>
+        </script>
+    <script class="videos-to-choose-template" type="text/x-handlebars-template">
+            <div class="choose-video">choose video:</div>
+            <img src="{{image1}}" data-id="{{videoId1}}" alt="10 minutes video" class="image-btn"/>
+             <img src="{{image2}}" data-id="{{videoId2}}" alt="10 minutes video" class="image-btn"/>
+             <img src="{{image3}}" data-id="{{videoId3}}" alt="10 minutes video" class="image-btn"/>
+            <br/>
+            <div id="player"></div>
+            <button class="finish-challenge" type="button">Finish challenge</button>
+        </script>
+    <!-- <script src="jquery/dist/jquery.js"></script> -->
+    <script src="handlebars/dist/handlebars.js"></script>
+    <script src="main.js" type="module"></script>
+
+  </body>
+
+</html>
