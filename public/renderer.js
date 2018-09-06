@@ -9,6 +9,7 @@ class Renderer {
         this.$challengeName = $('.challenge-name');
         this.$userTemplate = $('.user-template').html();
         this.$challengeTemplate = $('.challenge-template').html();
+        this.$messageTemplate = $('.message-template').html();
     }
 
     renderUser(users){
@@ -27,6 +28,12 @@ class Renderer {
     renderVideosToChoose(videoObj){
         let template = Handlebars.compile(this.$videosToChooseTemplate);
         let newHTML = template(videoObj);
+        this.$videoContainer.append(newHTML)
+    }
+
+    renderMessage(userName){
+        let template = Handlebars.compile(this.$messageTemplate);
+        let newHTML = template({userName});
         this.$videoContainer.append(newHTML)
     }
 

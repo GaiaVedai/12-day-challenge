@@ -74,11 +74,11 @@
             <!-- this is where we place our video -->
         </div>
     </div>
-    <div class="stats-bar">
+    <!-- <div class="stats-bar">
         <div class="show-stats">
             this is where your stats are
         </div>
-    </div>
+    </div> -->
 
     <!-- <section>
       <div class="container">
@@ -132,7 +132,10 @@
             <br/>
             <div id="player"></div>
             <button class="finish-challenge" type="button">Finish challenge</button>
-        </script>
+    </script>
+    <script class="message-template" type="text/x-handlebars-template">
+      <h2 class="message-header" data-name="{{userName}}" data-id="{{id}}"> Great job {{userName}}! You finished your challenge!</h2>
+    </script>
     <!-- <script src="jquery/dist/jquery.js"></script> -->
     <script src="handlebars/dist/handlebars.js"></script>
     <script src="main.js" type="module"></script>

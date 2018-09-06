@@ -71,41 +71,39 @@ class EventsHandler {
             } else if ($videoId === this.obj.videoId3){
                 $('.video-container').append('<iframe id=' + this.obj.videoId3 + ' src="https://www.youtube.com/embed/' + this.obj.videoId3 + '?enablejsapi=1" frameborder="0"></iframe>')
             }
-            let $videoContainer = $clickedImgBtn.closest('.video-container');
-            let $challengeName = $videoContainer.siblings('.challenge-name');
-            let $challengeHeader = $challengeName.find('.chall-header')
-            let $type = $challengeHeader.data('type');
-            let $mainContainer = $videoContainer.closest('.main-container');
-            let $header = $mainContainer.siblings('.header');
-            let $username = $header.find('.username-header').data('name');
-            let userIndex = this.user._findIndexByUserName($userName);
-            let challengeID = $challengeHeader.data('id');
-            let challengeIndex = this.user._findIndexByChallengeID (userIndex, challengeID)
-            this.ajaxRequests.postNewVideo("POST", '/challenges/'+$type+$videoId, $username)
-                .then((data)=>{
-                    this.user.addNewVideo(data.challanges[0].videoId, challengeIndex, userIndex)
-                    // this.obj
-                })
+            // let $videoContainer = $clickedImgBtn.closest('.video-container');
+            // let $challengeName = $videoContainer.siblings('.challenge-name');
+            // let $challengeHeader = $challengeName.find('.chall-header')
+            // let $type = $challengeHeader.data('type');
+            // let $mainContainer = $videoContainer.closest('.main-container');
+            // let $header = $mainContainer.siblings('.header');
+            // let $username = $header.find('.username-header').data('name');
+            // let userIndex = this.user._findIndexByUserName($userName);
+            // let challengeID = $challengeHeader.data('id');
+            // let challengeIndex = this.user._findIndexByChallengeID (userIndex, challengeID)
+            // this.ajaxRequests.postNewVideo("POST", '/challenges/'+$type+$videoId, $username)
+            //     .then((data)=>{
+            //         this.user.addNewVideo(data.challanges[0].videoId, challengeIndex, userIndex)
+            //         // this.obj
+            //     })
         })
     }
 
-
+    registerMessage() {
+        $('.video-container').on('click', '.finish-challenge', (event)=> {
+            let $clickedFinish = $(event.currentTarget);
+            let $videoCont = $clickedFinish.closest('.video-container');
+            let $mainCont = $videoCont.closest('.main-container');
+            let $masthead = $mainCont.siblings('.masthead');
+            let $i = $masthead.find('.i');
+            let $userNameHeader = $i.find('.username-header'); 
+            let $userName = $userNameHeader.data('name');
+            this.renderer.renderMessage($userName);
+        })    
+    }
 }
 
 export default EventsHandler
 
 
-    // registerRemovePost() {
-    //     this.$posts.on('click', '.remove-post', (event) => {
-    //         let $currentPost =  $(event.currentTarget).closest('.post')
-    //         let index = $currentPost.index();
-    //         let $currentPostDataId = $currentPost.data('id');
-    //         this.postsRequest.deletePost($currentPostDataId)
-    //         .then((data)=>{
-    //             alert(data);
-    //             this.postsRepository.removePost(index);
-    //             this.postsRenderer.renderPosts(this.postsRepository.posts);
-    //         })
-    //     });
-
-    // }
+    
