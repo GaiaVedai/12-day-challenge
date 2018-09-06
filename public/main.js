@@ -13,4 +13,4 @@ eventsHandler.registerAddUser();
 eventsHandler.registerAddChallenge();
 eventsHandler.registerChooseVideo();
 // eventsHandler.registerAddVideo();
-eventsHandler.registerWatchVideo()
+// eventHandler.registerFinishChallenge()

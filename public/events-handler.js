@@ -8,6 +8,7 @@ class EventsHandler {
         this.user = user;
         this.renderer = renderer;
         this.$videoContainer = $(".video-container");
+        this.obj = obj;
     }
 
     registerAddUser() {
@@ -46,10 +47,10 @@ class EventsHandler {
             let $type = $challengeHeader.data('type');
             this.ajaxRequests.getVideo("GET", $type)
                 .then((data)=>{
-                    this.renderer.renderVideosToChoose(this.renderer.videoObj(data))
-                    let videoID = data.items[0].id.videoId
-                    let video_url = 'https://www.youtube.com/embed/' + videoID + '?enablejsapi=1'
-                    $('.video-container').append('<iframe id=videoID src="' + video_url + '" frameborder="0"></iframe>')
+                    this.obj = this.renderer.renderVideosToChoose(this.renderer.videoObj(data));
+                    // $('.video-container').append('<iframe id="this.obj.videoId1" src="https://www.youtube.com/embed/" + "obj.videoId1" + "?enablejsapi=1" frameborder="0"></iframe>')
+                    // $('.video-container').append('<iframe id="this.obj.videoId2" src="https://www.youtube.com/embed/" + "obj.videoId2" + "?enablejsapi=1" frameborder="0"></iframe>')
+                    // $('.video-container').append('<iframe id="this.obj.videoId3" src="https://www.youtube.com/embed/" + "obj.videoId3" + "?enablejsapi=1" frameborder="0"></iframe>')
                 })
         })
     }
@@ -71,6 +72,7 @@ class EventsHandler {
             this.ajaxRequests.postNewVideo("POST", '/challenges/'+$type+$videoId, $username)
                 .then((data)=>{
                     this.user.addNewVideo(data.challanges[0].videoId, challengeIndex, userIndex)
+                    this.obj
                 })
         })
     }
